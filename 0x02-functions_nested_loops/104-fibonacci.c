@@ -1,28 +1,31 @@
 #include <stdio.h>
-
 /**
- * main - entry point
+ * main - main function
  *
- * Return: always 0
+ * Return: nothing
  */
-
 int main(void)
 {
-	int i;
-	long int j[96];
+	int counter = 2;
 
-	j[0] = 1;
-	j[1] = 2;
-	printf("%lu, %lu, ", j[0], j[1]);
+	float a = 1;
+	float b = a + 1;
+	float c = a + b;
 
-	for (i = 2; i < 96; i++)
+	printf("%.0f, ", a);
+	printf("%.0f, ", b);
+	while (counter < 98)
 	{
-		j[i] = j[i - 1] + j[i - 2];
-		if (i == 95)
-			printf("%lu\n", j[i]);
-		else
-			printf("%lu, ", j[i]);
+		counter++;
+		printf("%.0f", c);
+		a = b;
+		b = c;
+		c = a + b;
+		if (counter < 98)
+		{
+			printf(", ");
+		}
 	}
-
+	printf("\n");
 	return (0);
 }
