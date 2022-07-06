@@ -9,19 +9,19 @@
 int main(void)
 {
 	int i;
-	long int j[98];
+	float j[98];
 
 	j[0] = 1;
 	j[1] = 2;
-	printf("%ld, %ld, ", j[0], j[1]);
+	printf("%.0f, %.0f, ", j[0], j[1]);
 
 	for (i = 2; i < 98; i++)
 	{
 		j[i] = j[i - 1] + j[i - 2];
 		if (i == 97)
-			printf("%ld\n", j[i]);
+			printf("%.0f\n", j[i]);
 		else
-			printf("%ld, ", j[i]);
+			printf("%.0f, ", j[i]);
 	}
 
 	return (0);
