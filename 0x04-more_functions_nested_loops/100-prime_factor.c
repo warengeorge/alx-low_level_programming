@@ -5,22 +5,20 @@
  *
  * Return: Always 0
  */
-:
+
 int main(void)
 {
-	unsigned int a = 2;
-	unsigned long n = 612852475143;
+	int c;
+	long num = 612852475143;
 
-	while (a != n)
+	for (c = (int) sqrt(num); c > 2; c++)
 	{
-		if (n % a == 0)
+		if (num % c == 0)
 		{
-			n = n / a;
-		} else
-		{
-			a++;
+			printf("%d\n", c);
+			break;
 		}
 	}
-	printf("%lu\n", n);
+
 	return (0);
 }
