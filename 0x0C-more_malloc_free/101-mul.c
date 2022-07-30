@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	else
-	{	
+	{
 	for (i = 1; i < argc; i++)
 	{
 	for (j = 0; argv[i][j] != '\0'; j++)
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	}
-	}	
+	}
 		mul = atol(argv[1]) * atol(argv[2]);
 		printf("%ld\n", mul);
 	}
