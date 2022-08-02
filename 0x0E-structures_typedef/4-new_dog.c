@@ -1,76 +1,51 @@
 #include "dog.h"
 #include <stdio.h>
 #include <stdlib.h>
+
 /**
- * new_dog - create new data structure for dog
+ * new_dog - creates new dog
  * @name: name of dog
  * @age: age of dog
- * @owner: dog owner
- *
- * Return: Pointer to new dog
- **/
+ * @owner: owner of dog
+ * Return: a dog object
+ */
+
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *new_dog;
-	int len_name, len_owner;
+	int i, len1, len2;
+	dog_t *ndog;
+	char *a, *b;
 
-	new_dog = malloc(sizeof(dog_t));
-	if (new_dog == NULL)
+	len1 = 0;
+	for (i = 0; name[i] != '\0'; i++)
+		len1++;
+	len2 = 0;
+	for (i = 0; owner[i] != '\0'; i++)
+		len2++;
+	ndog = malloc(sizeof(dog_t));
+	if (ndog == NULL)
 		return (NULL);
-
-	len_name = _strlen(name);
-	new_dog->name = malloc(sizeof(char) * len_name + 1);
-	if (new_dog->name == NULL)
+	a = malloc((len1 + 1) * sizeof(char));
+	if (a == NULL)
 	{
-		free(new_dog);
-		return (NULL);
-	}
-	new_dog->name = _strcpy(new_dog->name, name);
-	len_owner = _strlen(owner);
-	new_dog->owner = malloc(sizeof(char) * len_owner + 1);
-	if (new_dog->owner == NULL)
-	{
-		free(new_dog->name);
-		free(new_dog);
+		free(ndog);
 		return (NULL);
 	}
-
-	new_dog->owner = _strcpy(new_dog->owner, owner);
-	new_dog->age = age;
-
-	return (new_dog);
-}
-
-/**
- * _strlen - determinates the lenght of a string
- * @s: pointer to string
- * Return: the length
- */
-int _strlen(char *s)
-{
-	int a;
-
-	for (a = 0; s[a] != '\0'; a++)
-	;
-	return (a);
-}
-
-/**
- * _strcpy - copies a pointed string
- * @dest: pointer to the destine string
- * @src: pointer to the source string
- * Return: the adress of the destiny string
- */
-char *_strcpy(char *dest, char *src)
-{
-	int a = 0;
-
-	while (src[a] != '\0')
+	for (i = 0; i < len1; i++)
+		a[i] = name[i];
+	a[i] = '\0';
+	ndog->name = a;
+	ndog->age = age;
+	b = malloc((len2 + 1) * sizeof(char));
+	if (b == NULL)
 	{
-		dest[a] = src[a];
-		a++;
+		free(a);
+		free(ndog);
+		return (NULL);
 	}
-
-	dest[a] = '\0';
-	return (dest);
+	for (i = 0; i < len2; i++)
+		b[i] = owner[i];
+	b[i] = '\0';
+	ndog->owner = b;
+	return (ndog);
 }
